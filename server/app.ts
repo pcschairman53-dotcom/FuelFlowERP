@@ -4,6 +4,8 @@
  */
 
 import express from 'express';
+import mongoose from 'mongoose';
+import { connectDB } from './config/db';
 import { requestLogger } from './middleware/logger';
 import { errorHandler } from './middleware/error';
 
@@ -30,6 +32,20 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
+
+// Database connection health check middleware for serverless cold-starts & transient workloads
+app.use(async (req, res, next) => {
+  const state = mongoose.connection.readyState;
+  if (state !== 1 && state !== 2) {
+    try {
+      console.log('⚡ Serverless & Lazy Context: Connecting to MongoDB Atlas...');
+      await connectDB();
+    } catch (err: any) {
+      console.error('❌ Serverless & Lazy Context: Connection failed:', err.message || err);
+    }
+  }
+  next();
+});
 
 // API Routes Mounting
 app.use('/api/users', userRoutes);
