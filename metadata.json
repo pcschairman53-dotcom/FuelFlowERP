@@ -1,0 +1,6 @@
+{
+  "name": "FuelFlow ERP",
+  "description": "Premium Enterprise Petrol Pump ERP Dashboard & Management SaaS for Ashok Fuels",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
