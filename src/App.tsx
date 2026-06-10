@@ -10,9 +10,9 @@ import DashboardView from './components/screens/DashboardView';
 import {
   FuelSalesScreen,
   CollectionsScreen,
-  CashManagementScreen,
   ExpensesScreen
 } from './components/screens/OperationsView';
+import { CashManagementScreen } from './components/CashManagement';
 import {
   TankStockScreen,
   HpclLoadManagementScreen,
@@ -492,10 +492,7 @@ export default function App() {
         />
       )}
       {activeScreen === 'Cash Management' && (
-        <CashManagementScreen
-          logs={cashLogs}
-          onAddLog={(log) => setCashLogs([log, ...cashLogs])}
-        />
+        <CashManagementScreen />
       )}
       {activeScreen === 'Bank Management' && (
         <BankManagementScreen

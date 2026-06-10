@@ -17,6 +17,7 @@ import { Expense } from '../models/Expense';
 import { JournalVoucher } from '../models/JournalVoucher';
 import { ReportLog } from '../models/ReportLog';
 import { Setting } from '../models/Setting';
+import { CashMovement } from '../models/CashMovement';
 
 import {
   INITIAL_USERS,
@@ -46,7 +47,8 @@ const MODEL_MAP: Record<string, any> = {
   Expense,
   JournalVoucher,
   ReportLog,
-  Setting
+  Setting,
+  CashMovement
 };
 
 // Initialize In-Memory fallback datasets
@@ -130,6 +132,56 @@ const IN_MEMORY_STORE: Record<string, any[]> = {
       dipReading: 2600,
       waterLevel: 5,
       remarks: 'Load decanted from tanker J-9005'
+    }
+  ],
+  CashMovement: [
+    {
+      id: 'CM-101',
+      date: '2026-06-08',
+      type: 'CASH_IN',
+      amount: 150000,
+      source: 'Safe Vault',
+      destination: 'Counter Till',
+      remarks: 'Opening cashier cash setup',
+      createdBy: 'Anand Ashok',
+      createdAt: '2026-06-08T09:00:00.000Z',
+      updatedAt: '2026-06-08T09:00:00.000Z'
+    },
+    {
+      id: 'CM-102',
+      date: '2026-06-08',
+      type: 'BANK_DEPOSIT',
+      amount: 100000,
+      source: 'Counter Till',
+      destination: 'SBI Current Account',
+      remarks: 'Daily evening deposit to bank',
+      createdBy: 'Anand Ashok',
+      createdAt: '2026-06-08T18:00:00.000Z',
+      updatedAt: '2026-06-08T18:00:00.000Z'
+    },
+    {
+      id: 'CM-103',
+      date: '2026-06-09',
+      type: 'CASH_IN',
+      amount: 75000,
+      source: 'Safe Vault',
+      destination: 'Counter Till',
+      remarks: 'Daily cash replenishment',
+      createdBy: 'Anand Ashok',
+      createdAt: '2026-06-09T09:00:00.000Z',
+      updatedAt: '2026-06-09T09:00:00.000Z'
+    },
+    {
+      id: 'CM-104',
+      date: '2026-06-09',
+      type: 'CASH_OUT',
+      amount: 12000,
+      source: 'Counter Till',
+      destination: 'Office Stationery Shop',
+      remarks: 'Cash payout for printer paper and binders',
+      createdBy: 'Staff Cashier',
+      createdAt: '2026-06-09T14:30:00.000Z',
+      updatedAt: '2026-06-09T14:30:00.000Z'
     }
   ]
 };

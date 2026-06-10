@@ -25,6 +25,7 @@ import expenseRoutes from './routes/expenseRoutes';
 import journalVoucherRoutes from './routes/journalVoucherRoutes';
 import reportRoutes from './routes/reportRoutes';
 import settingRoutes from './routes/settingRoutes';
+import cashManagementRoutes from './routes/cashManagementRoutes';
 
 const app = express();
 
@@ -63,6 +64,7 @@ app.use('/api/expenses', expenseRoutes);
 app.use('/api/journal-vouchers', journalVoucherRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/api/settings', settingRoutes);
+app.use('/api/cash-movements', cashManagementRoutes);
 
 // Base API status endpoint
 app.get('/api/health', (req, res) => {
